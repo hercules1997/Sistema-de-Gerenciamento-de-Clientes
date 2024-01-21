@@ -1,6 +1,6 @@
 # Aplicação de Gerenciamento de Clientes 
 
-Este applicativo é foi desenvolvido através de um desafio da Facilita Jurídica para teste de conhecimentos. O objetivo do app é gerenciar o controle de rotas de serviço de limpeza, programando assim a rota mais proxima da empresa e retornando uma lista dos locais mais próximos.
+Este aplicativo é foi desenvolvido através de um desafio da Facilita Jurídica para teste de conhecimentos. O objetivo do app é gerenciar o controle de rotas de serviço de limpeza, programando assim a rota mais proxima da empresa e retornando uma lista dos locais mais próximos.
 
 <div align="center">
     <img src="https://github.com/hercules1997/Sistema-de-Gerenciamento-de-Clientes/assets/109186074/367091b6-7421-4512-92b3-0feccbe83981" width="350px"/>
