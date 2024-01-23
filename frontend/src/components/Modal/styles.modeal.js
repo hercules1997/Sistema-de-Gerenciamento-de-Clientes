@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { theme } from '../../styles/theme';
+import styled from "styled-components";
+import { theme } from "../../styles/theme";
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -20,6 +20,11 @@ export const ModalContent = styled.div`
   border-radius: 5px;
   max-width: 800px;
   width: 100%;
+
+  h2 {
+    color: ${theme.colors.primaryDark};
+    text-align: center;
+  }
 `;
 
 export const CloseButton = styled.span`

@@ -51,7 +51,7 @@ export const ButtonAdd = styled(Button)`
   background-color: transparent;
 
   color: ${theme.colors.light};
-border: none;
+  border: none;
 
   width: 40px;
 `;

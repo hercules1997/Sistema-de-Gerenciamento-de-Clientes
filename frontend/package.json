@@ -1,7 +1,12 @@
 {
   "name": "frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Hércules Chaves Andrade - Desenvolvedor de web",
+    "email": "hercules.chaves.andrade@gmail.com",
+    "url": "https://hercules1997.github.io/my-portfolio/"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,7 +17,9 @@
   "dependencies": {
     "@nivo/core": "^0.84.0",
     "@nivo/line": "^0.84.0",
+    "@phosphor-icons/react": "^2.0.15",
     "axios": "^1.6.5",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.8"

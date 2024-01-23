@@ -1,31 +1,17 @@
 import { ResponsiveLine } from "@nivo/line";
-import { useEffect, useState } from "react";
-import { api } from "../../service/api";
 import { theme } from "../../styles/theme";
+import { useClient } from "../../hooks/ClientContext";
 
 export const CartesianPlane = () => {
-  const [list, setList] = useState([]);
 
-  useEffect(() => {
-    const listarClientes = async () => {
-      try {
-        const { data } = await api.get("/clientes");
-        setList(data);
-      } catch (error) {
-        console.error("Erro ao listar clientes", error);
-      }
-    };
+  const { rotaData } = useClient()
 
-    return () => {
-      listarClientes();
-    };
-  }, []);
 
   const data = [
     {
-      id: Object.values(list).map((item) => item.nome),
+      id: Object.values(rotaData).map((item) => item.id),
       color: "green",
-      data: Object.values(list).map((item) => ({
+      data: Object.values(rotaData).map((item) => ({
         x: item.x,
         y: item.y,
       })),
@@ -95,7 +81,7 @@ export const CartesianPlane = () => {
         }}
         pointSize={20}
         pointColor={{ theme: "background" }}
-        pointBorderWidth={2}
+        pointBorderWidth={5}
         pointBorderColor={{ from: "serieColor" }}
         pointLabelYOffset={-12}
         useMesh={true}

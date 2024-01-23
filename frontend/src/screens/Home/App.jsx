@@ -1,37 +1,38 @@
 import {
+  ButtonCancel,
   CardModal,
+  ContainerButton,
   ContainerLeft,
   ContainerRight,
   ContentChart,
+  ContentRote,
   Header,
   Main,
 } from "./styles.home";
 import { Logo } from "../../components/Logo";
 import { ListClients } from "../../components/ListClients";
 import { Cadastro } from "../Cadastro";
-import { api } from "../../service/api";
 import {  useState } from "react";
 import { CartesianPlane } from "../../components/Chart";
 import { Modal } from "../../components/Modal";
 import { Button } from "../../components/Button";
+import { X } from "@phosphor-icons/react";
+import { CardRoute } from "../../components/CardRotes";
+import { useClient } from "../../hooks/ClientContext";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [setClientes] = useState([]);
-  const [rotaCalculada, setRotaCalculada] = useState();
 
-  const calcularRota = async () => {
-    try {
-      const {
-        data: { rota_Ordenada_Mais_Proxima },
-      } = await api.get("/calcular-rota");
-      setRotaCalculada(rota_Ordenada_Mais_Proxima);
-      
-      openModal();
-    } catch (error) {
-      console.error("Erro ao listar clientes", error);
-    }
-  };
+ 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+  const { limparLocalStorage, rotaData, rotaCalculada, calcularRota } =
+    useClient();
+
+  // console.log(rotaCalculada);
+
+
+
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -41,28 +42,22 @@ function App() {
     setIsModalOpen(false);
   };
 
-  const listarClientes = async () => {
-    try {
-      const { data } = await api.get("/clientes");
-      setClientes(data);
-    } catch (error) {
-      console.error("Erro ao listar clientes", error);
-    }
-  };
+  
 
 
   return (
     <>
       <div>
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <button style={{ color: "#FFFFFF", background: "transparent", border: "0.4px dashed gray", fontSize: "30px", padding: "5px" }} onClick={closeModal}>
-            X
-          </button>
+          <ButtonCancel onClick={closeModal}>
+            <X size={22} />
+          </ButtonCancel>
 
+          <h2>Rotas Calculadas de acordo com a distânicia mínima</h2>
           {rotaCalculada &&
             rotaCalculada.map((result, index) => (
               <CardModal key={result.id}>
-                <p className="title">Rota: {index} -</p>
+                <p className="text">{index}° Rota </p>
                 <p className="title">Cliente:</p>
                 <p className="text">{result.nome}</p>
                 <p className="title">Coordenada X:</p>
@@ -79,17 +74,48 @@ function App() {
       </Header>
       <Main>
         <ContainerLeft>
-          <Cadastro onCadastroSuccess={listarClientes} />
+          <Cadastro         onCadastroSuccess />
         </ContainerLeft>
         <ContainerRight>
           <ListClients />
         </ContainerRight>
       </Main>
-      <Button onClick={() => calcularRota()}>Calucular Rota</Button>
-      <ContentChart>
-        <h1>Gráfico da localização dos Clientes</h1>
-        <CartesianPlane />
-      </ContentChart>
+      <Main>
+        <ContentChart>
+          <h1>Gráfico da localização dos Clientes</h1>
+          <CartesianPlane />
+        </ContentChart>
+
+        <ContentRote>
+          <h1>Rotas selecionadas</h1>
+          <CardRoute>
+            {rotaData &&
+              rotaData.map((item) => (
+                <span key={item.id}>
+                  <p className="title">Rota: {item} -</p>
+                  <p className="title">Cliente:</p>
+                  <p className="text">{item.nome}</p>
+                  <p className="title">Coordenada X:</p>
+                  <p className="text">{item.x}</p>
+                  <p className="title">Coordenada Y:</p>
+                  <p className="text">{item.y}</p>
+                </span>
+              ))}
+            <ListClients />
+          </CardRoute>
+          <ContainerButton>
+            <Button
+              className="btn-calculator"
+              onClick={() => calcularRota() && openModal()}
+            >
+              Calucular Rota
+            </Button>
+            <Button className="btn-clean" onClick={() => limparLocalStorage()}>
+              Limpar rotas
+            </Button>
+          </ContainerButton>
+        </ContentRote>
+      </Main>
     </>
   );
 }

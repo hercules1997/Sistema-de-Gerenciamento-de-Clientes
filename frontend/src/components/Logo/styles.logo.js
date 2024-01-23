@@ -3,5 +3,5 @@ import { theme } from "../../styles/theme";
 
 
 export const H1 = styled.h1`
-  color: ${theme.colors.primaryDark};
+  color: ${theme.colors.primary};
 `;
