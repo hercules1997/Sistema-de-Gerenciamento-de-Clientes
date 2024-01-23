@@ -3,11 +3,12 @@
 Este aplicativo é foi desenvolvido através de um desafio da Facilita Jurídica para teste de conhecimentos. O objetivo do app é gerenciar o controle de rotas de serviço de limpeza, programando assim a rota mais proxima da empresa e retornando uma lista dos locais mais próximos.
 
 <div align="center">
-    <img src="https://github.com/hercules1997/Sistema-de-Gerenciamento-de-Clientes/assets/109186074/ba4bb1c6-f3e6-4ce3-a835-4455b675009f" width="350px"/>
-    <img src="https://github.com/hercules1997/Sistema-de-Gerenciamento-de-Clientes/assets/109186074/e2fdbba7-870a-476b-adda-c07ec79112d6" width="400px"/>
+    <img src="https://github.com/hercules1997/Sistema-de-Gerenciamento-de-Clientes/assets/109186074/ba4bb1c6-f3e6-4ce3-a835-4455b675009f" width="400px"/>
+    <img src="https://github.com/hercules1997/Sistema-de-Gerenciamento-de-Clientes/assets/109186074/4d53cbdf-db8e-453e-a420-5cc88455dc54" width="380px"/>
 </div>
 
 
+![image]()
 
 
 
