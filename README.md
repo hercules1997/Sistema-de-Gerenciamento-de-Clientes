@@ -8,7 +8,6 @@ Este aplicativo é foi desenvolvido através de um desafio da Facilita Jurídica
 </div>
 
 
-![image]()
 
 
 
